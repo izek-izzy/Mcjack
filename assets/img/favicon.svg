@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="32" height="32" role="img" aria-labelledby="fTitle">
+  <title id="fTitle">McJack favicon</title>
+  <rect width="240" height="240" rx="40" fill="#ffffff"/>
+  <circle cx="120" cy="120" r="100" fill="none" stroke="#f28c2b" stroke-width="18" />
+  <g transform="translate(0,0)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 160 L80 90 L100 140 L120 90 L136 160" stroke="#0b2740" stroke-width="10"/>
+    <path d="M148 92 Q160 92 164 108 Q168 124 156 142 Q148 154 136 154" stroke="#f28c2b" stroke-width="12"/>
+  </g>
+</svg>

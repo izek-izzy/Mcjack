@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" role="img" aria-labelledby="logoCleanTitle">
+  <title id="logoCleanTitle">McJack — Construction & Suppliers</title>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0b2740"/>
+      <stop offset="1" stop-color="#0b2740"/>
+    </linearGradient>
+  </defs>
+  <!-- Left mark: stylized M and house/gear -->
+  <g transform="translate(24,24)">
+    <!-- gear outline (simple) -->
+    <g transform="translate(60,56) scale(0.9)">
+      <circle cx="0" cy="0" r="46" fill="#f28c2b" opacity="0.12" />
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#f28c2b" stroke-width="6" />
+      <rect x="-10" y="-10" width="20" height="20" rx="2" fill="#0b2740" />
+      <path d="M-18 10 L0 -18 L18 10" fill="none" stroke="#0b2740" stroke-width="6" stroke-linejoin="round"/>
+    </g>
+    <!-- M letter -->
+    <path d="M140 140 L140 40 L168 100 L196 40 L196 140" fill="none" stroke="#0b2740" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- J letter -->
+    <path d="M226 42 Q248 42 248 74 Q248 120 216 140" fill="none" stroke="#f28c2b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Company name -->
+  <text x="320" y="95" font-family="Segoe UI, Roboto, Arial" font-size="28" fill="#0b2740" font-weight="700">McJack</text>
+  <text x="320" y="130" font-family="Segoe UI, Roboto, Arial" font-size="14" fill="#0b2740" letter-spacing="2">CONSTRUCTION &amp; SUPPLIERS LTD</text>
+</svg>

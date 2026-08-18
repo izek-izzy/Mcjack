@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="logoMarkTitle">
+  <title id="logoMarkTitle">McJack mark (rounded)</title>
+  <defs>
+    <clipPath id="circleMask">
+      <circle cx="120" cy="120" r="92" />
+    </clipPath>
+  </defs>
+
+  <!-- outer orange ring -->
+  <rect width="240" height="240" fill="transparent"/>
+  <circle cx="120" cy="120" r="110" fill="none" stroke="#f28c2b" stroke-width="18" />
+
+  <!-- clipped original logo image inside the ring -->
+  <g clip-path="url(#circleMask)">
+    <image href="logo.jpg" x="0" y="0" width="240" height="240" preserveAspectRatio="xMidYMid slice" />
+  </g>
+
+  <!-- subtle inner border to separate image from ring -->
+  <circle cx="120" cy="120" r="92" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+</svg>

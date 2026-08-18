@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Export McJack Rounded Logo</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;padding:24px}button{padding:8px 12px}</style>
+</head>
+<body>
+  <h1>Export Rounded Logo PNG</h1>
+  <p>This tool loads <code>assets/img/logo.svg</code> and exports a circular 240×240 PNG.</p>
+  <label>Size: <input id="size" type="number" value="240" style="width:90px"></label>
+  <button id="export">Export rounded PNG</button>
+  <p id="status"></p>
+  <canvas id="c" width="240" height="240" style="display:none"></canvas>
+
+  <script>
+    document.getElementById('export').addEventListener('click', async function(){
+      const size = parseInt(document.getElementById('size').value,10) || 240;
+      const status = document.getElementById('status');
+      status.textContent = 'Loading SVG…';
+      try{
+        const resp = await fetch('../assets/img/logo.svg');
+        if(!resp.ok) throw new Error('Failed to load SVG: '+resp.status);
+        const svgText = await resp.text();
+        const blob = new Blob([svgText], {type: 'image/svg+xml'});
+        const url = URL.createObjectURL(blob);
+        const img = new Image();
+        img.onload = ()=>{
+          const canvas = document.getElementById('c');
+          canvas.width = size; canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          ctx.clearRect(0,0,size,size);
+          // draw circular clip
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(size/2, size/2, size/2, 0, Math.PI*2);
+          ctx.closePath();
+          ctx.clip();
+          // draw white background to preserve ring transparency if any
+          ctx.fillStyle = 'transparent';
+          ctx.fillRect(0,0,size,size);
+          ctx.drawImage(img, 0, 0, size, size);
+          ctx.restore();
+          // create PNG
+          const data = canvas.toDataURL('image/png');
+          const a = document.createElement('a');
+          a.href = data;
+          a.download = 'mcjack-logo-rounded-'+size+'x'+size+'.png';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+          status.textContent = 'Downloaded.';
+        };
+        img.onerror = (e)=>{ status.textContent = 'Error rendering SVG to image.'; };
+        img.src = url;
+      }catch(err){
+        status.textContent = 'Error: '+err.message;
+      }
+    });
+  </script>
+</body>
+</html>

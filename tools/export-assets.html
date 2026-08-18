@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Export Logo Assets</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px}button{padding:8px 12px;margin:4px}</style>
+</head>
+<body>
+  <h1>Export Logo PNGs</h1>
+  <p>Generates high-res PNGs and rounded variants from `assets/img/logo-clean.svg` and `assets/img/logo-mark.svg`.</p>
+  <button id="exportAll">Export all PNGs (1x,2x)</button>
+  <p id="status"></p>
+  <canvas id="c" width="1024" height="1024" style="display:none"></canvas>
+
+  <script>
+    async function svgToPng(svgPath, size, filename){
+      const resp = await fetch('../'+svgPath);
+      if(!resp.ok) throw new Error('Failed to load '+svgPath);
+      const svgText = await resp.text();
+      const blob = new Blob([svgText], {type:'image/svg+xml'});
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = ()=>{
+        const canvas = document.getElementById('c');
+        canvas.width = size; canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,size,size);
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,size,size);
+        ctx.drawImage(img,0,0,size,size);
+        const data = canvas.toDataURL('image/png');
+        const a = document.createElement('a'); a.href = data; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(url);
+      };
+      img.onerror = ()=>{ throw new Error('Render error for '+svgPath); };
+      img.src = url;
+    }
+
+    document.getElementById('exportAll').addEventListener('click', async ()=>{
+      const status = document.getElementById('status');
+      status.textContent = 'Exporting...';
+      try{
+        await svgToPng('assets/img/logo-clean.svg', 480, 'logo-clean@1x.png');
+        await svgToPng('assets/img/logo-clean.svg', 960, 'logo-clean@2x.png');
+        await svgToPng('assets/img/logo-mark.svg', 240, 'logo-mark@1x.png');
+        await svgToPng('assets/img/logo-mark.svg', 480, 'logo-mark@2x.png');
+        status.textContent = 'Downloaded PNGs. Use them in `assets/img/`.';
+      }catch(err){ status.textContent = 'Error: '+err.message }
+    });
+  </script>
+</body>
+</html>

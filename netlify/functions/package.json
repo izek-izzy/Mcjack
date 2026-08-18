@@ -1,0 +1,8 @@
+{
+    "name": "mcjack-functions",
+    "version": "1.0.0",
+    "description": "Netlify functions for McJack site",
+    "dependencies": {
+        "nodemailer": "^6.9.3"
+    }
+}

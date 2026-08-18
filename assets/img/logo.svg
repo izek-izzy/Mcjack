@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">McJack Construction & Suppliers Ltd logo</title>
+  <!-- Outer orange ring -->
+  <circle cx="120" cy="120" r="110" fill="#fff" stroke="#f28c2b" stroke-width="18" />
+
+  <!-- Inner white area -->
+  <circle cx="120" cy="120" r="86" fill="#ffffff" />
+
+  <!-- Stylized M (navy) -->
+  <path d="M64 160 L80 90 L100 140 L120 90 L136 160" fill="none" stroke="#0b2740" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Stylized J (orange) -->
+  <path d="M148 92 Q160 92 164 108 Q168 124 156 142 Q148 154 136 154" fill="none" stroke="#f28c2b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M164 142 Q170 152 158 160 Q142 172 128 160" fill="#f28c2b" opacity="0.05" />
+
+  <!-- House + gear simplified emblem centered under letters -->
+  <g transform="translate(84,130)">
+    <!-- gear background (simplified) -->
+    <circle cx="36" cy="18" r="18" fill="#f28c2b" opacity="0.12" />
+    <!-- house -->
+    <polygon points="0,36 18,18 36,36 36,60 0,60" fill="#0b2740" />
+    <rect x="10" y="42" width="8" height="12" fill="#f28c2b" />
+    <!-- small gear teeth (decorative) -->
+    <g fill="#f28c2b" opacity="0.16">
+      <rect x="-4" y="6" width="4" height="6" rx="1" />
+      <rect x="36" y="6" width="4" height="6" rx="1" />
+      <rect x="16" y="-4" width="6" height="4" rx="1" transform="rotate(0 19 0)" />
+    </g>
+  </g>
+
+  <!-- Small company text beneath for use at larger sizes -->
+  <text x="120" y="206" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#0b2740" text-anchor="middle">MCJACK CONSTRUCTION &amp; SUPPLIERS LTD</text>
+</svg>
